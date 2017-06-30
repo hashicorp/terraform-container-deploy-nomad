@@ -23,6 +23,6 @@ script:
   - go build -o ./pkg/linux_amd64/http-echo .
   - cp ./docker/Dockerfile ./
   - echo $TRAVIS_BUILD_ID
-  - docker build -t nicholasjackson/http-echo:latest .
+  - docker build -t nicholasjackson/http-echo:$TRAVIS_BUILD_ID .
   - docker login -u $DOCKER_USER -p $DOCKER_PASS
-  - docker push nicholasjackson/http-echo:latest
+  - docker push nicholasjackson/http-echo:$TRAVIS_BUILD_ID
