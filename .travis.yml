@@ -14,11 +14,10 @@ install:
   - go get github.com/hashicorp/http-echo
 
 script:
-  - cd $GOPATH/src/github.com/hashicorp/http-echo/scripts
-  - NAME=http-echo PROJECT=test ./compile.sh
-  - cd ../
+  - cd $GOPATH/src/github.com/hashicorp/http-echo
+  - make bootstrap
+  - make bin
   - cp ./docker/Dockerfile ./
-  - ls -las
   - docker build -t tester/http-echo:latest .
 
 
