@@ -37,5 +37,4 @@ deploy:
   skip_cleanup: true
   script: scripts/deploy.sh
   on:
-    tags: true
     all_branches: true
