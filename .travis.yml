@@ -30,8 +30,12 @@ script:
   - docker build -t nicholasjackson/http-echo:$TRAVIS_BUILD_ID .
   - docker login -u $DOCKER_USER -p $DOCKER_PASS
   - docker push nicholasjackson/http-echo:$TRAVIS_BUILD_ID
+  - cd $TRAVIS_BUILD_DIR
 
 deploy:
   provider: script
   skip_cleanup: true
   script: scripts/deploy.sh
+  on:
+    tags: true
+    all_branches: true
