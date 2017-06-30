@@ -15,8 +15,7 @@ install:
 
 script:
   - cd $GOPATH/src/github.com/hashicorp/http-echo
-  - make bootstrap
-  - NAME=http-echo PROJECT=test make bin
+  - go build -o ./pkg/linux_amd64/http-echo .
   - cp ./docker/Dockerfile ./
   - docker build -t tester/http-echo:latest .
 
