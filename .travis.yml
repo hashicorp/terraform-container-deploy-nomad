@@ -14,6 +14,7 @@ env:
   - secure: 3piU4F4ve2F54fXtJGxO/dFHhCBioiRaHKdr/amIhL7yTy7G2g51BLJ6imBoUVWd1bPReAgPFmfH6X/1Ubs2cqAj01mrOCOTl3/nXXZgU3/XHpeB+FPDINScV1u7pYDdV8wzbrLt2wCZT14+DRGo9OLsXBBMeL/fy1CHqYdAgBD797m8uzjUDde0Nn7sMZoRj+eoUayYsaCqcJCHaUeMJk9TAXXqB0mKapRR34Ys+8QRySpoNvOkk31TiSm9WQPDPey+GrmYXbLbx1iVi2roEgbbVWZukJr6lcN9Y3qIVzfKBP5gDtdjHFQIutBNjLilunzQEAgHm00TeCuwHaBLCB43pe1PbmUeVBlDQm+1Acj3JT2lJoouObusYT+QGmEEBSgwPemznY9qXi1ciz19E+M0t05SID63Bf7v14zZsY5O1ck1kT0vqRYFm5WSp4qXULRr8KvoU7r5XSxe4WQZCNFu2Pj8hPliJq2xSdJeV3p35F03bxlnH+Ugw7UljKXnd6b1PAtafw/ndnJ8hn5M2rCF5MYLrqi4Xj26lFkfj3rrJ6dHvyeFzDgnhdlO3YPx/na2ZDYGOA4aGpglL+0kotXGIszEPhNzPhqQNtFArJtEQ8Adh+yZh07hzDyezV1u8rS5LsTm7RpNYZdRv8uTUMsIFGMsIMiopzGMLiyLZf4=
 
 before_install:
+  - mkdir ~/.ssh
   - openssl aes-256-cbc -K $encrypted_e930de6ba030_key -iv $encrypted_e930de6ba030_iv -in nomad_rsa.enc -out ~\/.ssh/nomad_rsa -d
   - chmod 600 ~/.ssh/nomad_rsa
 
