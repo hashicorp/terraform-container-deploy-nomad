@@ -17,6 +17,7 @@ script:
   - cd $GOPATH/src/github.com/hashicorp/http-echo
   - NAME=http-echo PROJECT=test ./scripts/compile.sh
   - cp ./docker/Dockerfile ./
+  - ls -las
   - docker build -t tester/http-echo:latest .
 
 
