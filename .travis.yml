@@ -24,7 +24,7 @@ install:
 
 script:
   - cd $GOPATH/src/github.com/hashicorp/http-echo
-  - go build -o ./pkg/linux_amd64/http-echo .
+  - CGO_ENABLED=0 go build -o ./pkg/linux_amd64/http-echo .
   - cp ./docker/Dockerfile ./
   - echo $TRAVIS_BUILD_ID
   - docker build -t nicholasjackson/http-echo:$TRAVIS_BUILD_ID .
