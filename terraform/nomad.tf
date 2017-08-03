@@ -11,7 +11,7 @@ data "template_file" "job" {
   template = "${file("${path.module}/http-echo.hcl.tmpl")}"
 
   vars {
-    VERSION = "${var.version}"
+    version = "${var.version}"
   }
 }
 
