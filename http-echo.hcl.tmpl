@@ -1,9 +1,8 @@
-job "http_test" {
+job "http-echo" {
   datacenters = ["dc1"]
   type        = "service"
 
   update {
-    stagger      = "10s"
     max_parallel = 1
   }
 
@@ -23,7 +22,7 @@ job "http_test" {
       driver = "docker"
 
       config {
-        image = "nicholasjackson/http-echo:${VERSION}"
+        image = "hashicorp/http-echo:${version}"
 
         args = [
           "-text",
