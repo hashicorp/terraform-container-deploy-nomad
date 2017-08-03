@@ -8,7 +8,7 @@ variable "version" {
 }
 
 data "template_file" "job" {
-  template = "${file("${path.module}/http-echo.hcl.tmpl")}"
+  template = "${file("./http-echo.hcl.tmpl")}"
 
   vars {
     version = "${var.version}"
