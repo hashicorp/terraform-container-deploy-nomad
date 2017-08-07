@@ -162,7 +162,7 @@ ID        Node ID   Task Group  Version  Desired  Status    Created At
 Stopping a job is just as simple if you run the command:
 
 ```
-$terraform destroy
+$ terraform destroy
 Resources shown in red will be destroyed.
 
   - nomad_job.http-echo
