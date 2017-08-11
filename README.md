@@ -1,7 +1,11 @@
 # Continous Deployment with Terraform and Nomad
-This post explores how to use the Nomad Terraform provider to run jobs with Nomad.  If you do not already have a Nomad server running, you can use the configuration from our post on [Auto bootstrapping Nomad](https://www.hashicorp.com/blog/auto-bootstrapping-a-nomad-cluster/) or you can use the playground at [https://katacoda.com/hashicorp/scenarios/playground](https://katacoda.com/hashicorp/scenarios/playground)
+Both HashiCorp Nomad and Terraform allow you to declaratively define infrastructure as code, but they serve different functions in the organization. Nomad schedules and monitors applications, making sure the application stays running and automatically reconciles any failure.  Nomad supports rolling deploys to deliver safer convergence. Nomad also integrates with Consul for service discovery and Vault for secrets management. Terraform, on the other hand, is a lifecycle management and provisioning tool. It creates, updates, and destroys the underlying infrastructure which Nomad will use to run applications. But Terraform is much more than a infrastructure tool - Terraform can also manage the process of submitting, updating, and deleting Nomad services, allowing you to model your entire infrastructure as code.
 
-You can find the source code associated with this article at the following link:
+The Nomad Terraform provider is perfect for continuous delivery of your services, and in this post we will look at how these tools work seamlessly together to enable this workflow.
+
+If you do not already have a Nomad server running, you can use the configuration from our post on [Auto bootstrapping Nomad](https://www.hashicorp.com/blog/auto-bootstrapping-a-nomad-cluster/) or you can use the Nomad playground at [https://katacoda.com/hashicorp/scenarios/playground](https://katacoda.com/hashicorp/scenarios/playground).
+
+The source code associated with this article is available at the following link:
 [https://github.com/hashicorp/terraform-container-deploy-nomad.git](https://github.com/hashicorp/terraform-container-deploy-nomad.git)
 
 ## Nomad Terraform provider
@@ -89,7 +93,7 @@ resource "nomad_job" "http-echo" {
 
 
 ## Running a job
-To run our job, we first need to see initialize Terraform:
+To run our job, we first need to initialize Terraform:
 
 ```bash
 $ terraform init
@@ -133,7 +137,7 @@ nomad_job.http-echo: Creating...
 Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 ```
 
-The job is now be running on the Nomad cluster we can use the `nomad status http-echo` command to see the full status.
+The job is now running on the Nomad cluster we can use the `nomad status http-echo` command to see the full status.
 
 ```bash
 $ nomad status http-echo
@@ -159,7 +163,7 @@ ID        Node ID   Task Group  Version  Desired  Status    Created At
 ```
 
 ## Stopping a job
-Stopping a job is just as simple if you run the command:
+Stopping a job is just as simple just run the command `terraform destroy`:
 
 ```
 $ terraform destroy
@@ -186,4 +190,6 @@ Destroy complete! Resources: 2 destroyed.
 
 
 ## Conclusion
-This post shows how easy it is to deploy Nomad applications using Terraform, and we hope you can see how this could be applied to your continuous delivery workflow.  These features are not limited to Nomad, Terraform also supports other schedulers like Kubernetes and Docker Swarm!
+This post shows how easy it is to deploy Nomad services using Terraform, and we hope you can see how this could be applied to your continuous delivery workflow.  The simple example in this post has only shown a small part of the capabilities of Nomad jobs, to learn more about this please see the [Nomad Job documentation](https://www.nomadproject.io/docs/job-specification/index.html)
+
+These features are not limited to Nomad, Terraform also supports other schedulers like Kubernetes and Docker Swarm!
