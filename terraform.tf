@@ -1,3 +1,5 @@
+# Copyright IBM Corp. 2017, 2026
+
 # Configure the Nomad provider
 provider "nomad" {
   address = "http://localhost:4646"
